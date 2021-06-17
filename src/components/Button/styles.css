@@ -1,0 +1,31 @@
+button {
+	width: 100px;
+	padding: 0.5em;
+	border: 1px rgba(0, 0, 0, 0.5) solid;
+	border-radius: 4px;
+	margin: 0.5em 0;
+}
+
+button:focus {
+	outline: #d9afd9 solid 2px;
+}
+
+button:active {
+	background: gray;
+}
+
+button:hover {
+	cursor: pointer;
+	box-shadow: 1px 1px 4px black;
+}
+
+button.delete {
+	background: #ff6961;
+	color: white;
+	width: auto;
+}
+
+button.delete:hover {
+	background: #ff6961;
+	color: white;
+}

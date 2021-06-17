@@ -1,11 +1,12 @@
 import React from "react";
+import "./styles.css";
 
-const Button = ({ title, onClick, type }) => {
-  return (
-    <button type={type || "button"} onClick={onClick}>
-      {title}
-    </button>
-  );
+const Button = ({ icon, onClick, type, className }) => {
+	return (
+		<button type={type || "button"} onClick={onClick} className={className}>
+			{icon}
+		</button>
+	);
 };
 
 export default Button;

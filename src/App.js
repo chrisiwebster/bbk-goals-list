@@ -8,78 +8,85 @@ const yearGoalsList = [];
 const monthGoalsList = [];
 
 const App = () => {
-  const [yearGoalValue, setYearGoalValue] = useState("");
-  const [yearGoals, setYearGoals] = useState(yearGoalsList);
+	const [yearGoalValue, setYearGoalValue] = useState("");
+	const [yearGoals, setYearGoals] = useState(yearGoalsList);
 
-  const [monthGoalValue, setMonthGoalValue] = useState("");
-  const [monthGoals, setMonthGoals] = useState(monthGoalsList);
+	const [monthGoalValue, setMonthGoalValue] = useState("");
+	const [monthGoals, setMonthGoals] = useState(monthGoalsList);
 
-  //Year goal functions
+	//Year goal functions
 
-  const handleOnChangeYearGoal = (e) => {
-    setYearGoalValue(e.target.value);
-  };
+	const handleOnChangeYearGoal = (e) => {
+		setYearGoalValue(e.target.value);
+	};
 
-  const handleOnSubmitYearGoal = (e) => {
-    e.preventDefault();
+	const handleOnSubmitYearGoal = (e) => {
+		e.preventDefault();
 
-    const newGoal = {
-      id: uuid(),
-      title: yearGoalValue,
-    };
+		const newGoal = {
+			id: uuid(),
+			title: yearGoalValue,
+		};
 
-    setYearGoals((prevState) => {
-      return [...prevState, newGoal];
-    });
-  };
+		setYearGoals((prevState) => {
+			return [...prevState, newGoal];
+		});
+	};
 
-  // const handleDeleteYearGoalClick = (id) => (goal) =>
-  //   setYearGoals(yearGoals.filter((goal) => goal.id !== id));
+	const handleDeleteYearGoalClick = (id) => {
+		const updatedYearGoals = [...yearGoals].filter((goal) => goal.id !== id);
+		setYearGoals(updatedYearGoals);
+	};
 
-  const handleDeleteYearGoalClick = (id) => {
-    const updatedYearGoals = [...yearGoals].filter((goal) => goal.id !== id);
-    setYearGoals(updatedYearGoals);
-  };
+	// Month goal functions
+	const handleOnChangeMonthGoal = (e) => {
+		setMonthGoalValue(e.target.value);
+	};
 
-  // Month goal functions
-  const handleOnChangeMonthGoal = (e) => {
-    setMonthGoalValue(e.target.value);
-  };
+	const handleOnSubmitMonthGoal = (e) => {
+		e.preventDefault();
 
-  const handleOnSubmitMonthGoal = (e) => {
-    e.preventDefault();
+		const newGoal = {
+			id: uuid(),
+			title: monthGoalValue,
+		};
 
-    const newGoal = {
-      id: uuid(),
-      title: monthGoalValue,
-    };
+		setMonthGoals((prevState) => {
+			return [...prevState, newGoal];
+		});
+	};
 
-    setMonthGoals((prevState) => {
-      return [...prevState, newGoal];
-    });
-  };
+	const handleDeleteMonthGoalClick = (id) => {
+		const updatedMonthGoals = [...monthGoals].filter((goal) => goal.id !== id);
+		setMonthGoals(updatedMonthGoals);
+	};
 
-  return (
-    <div className="App">
-      <h1>Goals App</h1>
-      <Goals
-        title="Year"
-        goals={yearGoals}
-        goalValue={yearGoalValue}
-        handleOnChange={handleOnChangeYearGoal}
-        handleOnSubmit={handleOnSubmitYearGoal}
-        onDeleteClick={handleDeleteYearGoalClick}
-      />
+	return (
+		<div className="App">
+			<header>
+				<h1>Goals App</h1>
+			</header>
+			<div className="goals-wrap">
+				<Goals
+					title="Year"
+					goals={yearGoals}
+					goalValue={yearGoalValue}
+					handleOnChange={handleOnChangeYearGoal}
+					handleOnSubmit={handleOnSubmitYearGoal}
+					onDeleteClick={handleDeleteYearGoalClick}
+				/>
 
-      <Goals
-        title="Month"
-        goals={monthGoals}
-        goalValue={monthGoalValue}
-        handleOnChange={handleOnChangeMonthGoal}
-        handleOnSubmit={handleOnSubmitMonthGoal}
-      />
-    </div>
-  );
+				<Goals
+					title="Month"
+					goals={monthGoals}
+					goalValue={monthGoalValue}
+					handleOnChange={handleOnChangeMonthGoal}
+					handleOnSubmit={handleOnSubmitMonthGoal}
+					onDeleteClick={handleDeleteMonthGoalClick}
+				/>
+			</div>
+		</div>
+	);
 };
 
 export default App;

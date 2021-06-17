@@ -1,0 +1,20 @@
+.goal-item {
+	display: flex;
+	justify-content: center;
+}
+input[type="checkbox"]:checked + label {
+	text-decoration: line-through;
+}
+
+input[type="checkbox"] ~ label {
+	flex: 2;
+}
+
+input[type="checkbox"],
+label {
+	align-self: center;
+}
+
+label {
+	margin-left: 0.5em;
+}
